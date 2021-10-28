@@ -3,13 +3,13 @@
 <head>
 	<title>Wheel of Fortune Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="wheel-of-fortune-game.js"></script>
 </head>
 <body>
 	<h1>Wheel of Fortune Game</h1>
 		<h2>Round 1</h2>
-		<div class="ticker">
-				
-			</div>
+		<div class="ticker">		
+			</div>	
 		<div id="wheel" class="wheel">
 			<div id="c1" class="c c--c1 txt">
 				<h2>$<br>8<br>0<br>0</h2>	
@@ -85,9 +85,10 @@
 			</div>
 			
 			<div class="center">
-				
+				<input id="btnSpin" type="button" value="SPIN" onclick ="return btnSpin_onclick()"/>  
 			</div>
 		</div>
+		<textarea id="txaCards" cols="100" rows="20"></textarea>
 	</div>
 	</div>
 
@@ -169,6 +170,10 @@
 			</div>
 			<div id="c24" class="c c--c24 txt">
 				<h2>$<br>4<br>5<br>0</h2>
+			</div>
+
+			<div class="center">
+				<img src="spin.png" alt="Spin" width="60" height="60" onclick="spin_onclick()">
 			</div>
 	</div>
 
@@ -253,6 +258,10 @@
 			</div>
 			<div id="c4" class="c c--c4 txt">
 				<h2>$<br>4<br>5<br>0</h2>
+			</div>
+
+			<div class="center">
+				<img src="spin.png" alt="Spin" width="60" height="60" onclick="spin_onclick()">
 			</div>
 
 		</div>
