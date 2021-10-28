@@ -1,11 +1,14 @@
-var wheelr1 = ['$800', '$700', '$550', '$750', '$600', 'BANKRUPT', '$200', '$650', '$800', '$600', 'LOSE TURN', 
-'$950', '$350', '$300', '$2500', 'BANKRUPT', 'LOSE TURN', '$900', '$600', '$900', '$650', '$800', '$700', '$650']; 
+// in array, 0 = Bankrupt and 1 = lose a turn 
+
+var wheelr1 = [800, 700, 550, 750, 600, 0, 200, 650, 800, 600, 1, 
+950, 350, 300, 2500, 0, 1, 900, 600, 900, 650, 800, 700, 650]; 
 var wheelr2 = [];
 var wheelr3 = []; 
 
 var stopTimer; // one time timer that stops spin
 var cardTimer;  // repeated timer that displays cards for the spin
 var i = 0; 
+var round = 1; 
 
 function GenRandNum(min, max) {
     var myTarget;
@@ -15,15 +18,51 @@ function GenRandNum(min, max) {
 
 function btnSpin_onclick() {
     clearTimeout(stopTimer);
+    // generates random time for the wheel to spin
     var spinTime = GenRandNum(3000, 9000); 
     cardTimer = setInterval(myWheel, 1000);
     stopTimer = setTimeout(stopSpin, spinTime);
 }
 
 function myWheel() { 
-    for(i = 0; i <= 23; i++){
-        document.getElementById("txaCards").value += wheelr1[i] + "\n";
-    } 
+    // goes through array of cards for whatever round we are in 
+    if (round == 1){
+        for(i = 0; i <= 23; i++){
+            if (wheelr1[i] == 0) {
+                document.getElementById("txaCards").value += "BANKRUPT";
+            }
+            else if (wheelr1[i] == 1) {
+                document.getElementById("txaCards").value += "LOSE A TURN";
+            } else {
+                document.getElementById("txaCards").value += "$" + wheelr1[i] + "\n";
+            }
+        } 
+    }
+    if (round == 2){
+        for(i = 0; i <= 23; i++){
+            if (wheelr2[i] == 0) {
+                document.getElementById("txaCards").value += "BANKRUPT";
+            }
+            else if (wheelr2[i] == 1) {
+                document.getElementById("txaCards").value += "LOSE A TURN";
+            } else {
+                document.getElementById("txaCards").value += "$" + wheelr2[i] + "\n";
+            }
+        } 
+    }
+    if (round == 3){
+        for(i = 0; i <= 23; i++){
+            if (wheelr3[i] == 0) {
+                document.getElementById("txaCards").value += "BANKRUPT";
+            }
+            else if (wheelr3[i] == 1) {
+                document.getElementById("txaCards").value += "LOSE A TURN";
+            } else {
+                document.getElementById("txaCards").value += "$" + wheelr3[i] + "\n";
+            }
+        } 
+    }
+    
 } 
 
 function stopSpin() { 
