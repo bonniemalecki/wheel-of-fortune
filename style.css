@@ -61,3 +61,63 @@ h1 {
 #enterLetter {
   width: 50%;
 }
+
+.player1total {
+    display: block;
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    background-color: green;
+    top: 48%;
+    left: 5%;
+    border-color: rgb(30, 255, 0);
+    border-width: 3px;
+    border-style: solid;
+    color: yellow;
+    text-align: center;
+}
+
+.player2total {
+    display: block;
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    background-color: green;
+    top: 48%;
+    right: 5%;
+    border-color: rgb(30, 255, 0);
+    border-width: 3px;
+    border-style: solid;
+    color: yellow;
+    text-align: center;
+}
+
+.spin {
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: rgb(0, 102, 255);
+    top: 50%;
+    right: 55%;
+    border-color: rgb(30, 255, 0);
+    border-width: 3px;
+    border-style: solid;
+    color: yellow;
+    text-align: center;
+}
+
+.skip {
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    top: 50%;
+    left: 55%;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    color: white;
+    text-align: center;
+}
