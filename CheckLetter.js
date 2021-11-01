@@ -62,8 +62,8 @@ window.onload = function(e) { //makes sure window is loaded
         var guessedLetter = $('#enterLetter').val();
         if (guessedLetter.length != 0) {
           var letterCount = 0;
-          for (var i = 0; i < game.currentPhrase.length; i++) {
-            if (game.currentPhrase[i] == guessedLetter) {
+          for (var i = 0; i < game.currentClue.length; i++) {
+            if (game.currClue[i] == guessedLetter) {
               $('#letter_' + i + '> p').css("visibility", "visible"); //Creating a loop that allows us to 
               letterCount++;
             } else {
@@ -71,9 +71,9 @@ window.onload = function(e) { //makes sure window is loaded
             }
           }
           if (letterCount == 0) {
-            game.currentPlayer = game.currentPlayer+1;
-            if (game.currentPlayer == game.playerArray.length) { //
-              game.currentPlayer = 0;
+            game.currPlayer = game.currPlayer+1;
+            if (game.currPlayer == game.playerArray.length) { //
+              game.currPlayer = 0;
             }
           } else {
             game.addScore();
@@ -82,20 +82,37 @@ window.onload = function(e) { //makes sure window is loaded
         } else {
           alert("Please enter a letter")
         };
-        console.log("game.currentPlayer", game.currentPlayer);
-        game.highlightPlayer();
+        console.log("game.currentPlayer", game.currPlayer);
+        
       }, 
    
     addScore: function(){
-        console.log("==addTotalScore==");
-      if (game.currentPlayer == 0){ // If the player is player 1 or 0 on the index, then update the score from the total_score 1
-        var updateTotalOne = (game.playerArray[0].totalScore + game.playerArray[0].roundScore);
-        game.playerArray[0].totalScore = updateTotalOne;
-        $('#totalScore_1').text(updateTotalOne);
-        game.playerArray[0].roundScore = 0;
-        $('#roundScore_1').text(0);
+        onsole.log("==addScore==");
+      if (game.currPlayer == 0){
+        var updateOneScore = (game.playerArray[0].roundScore + game.currValue);
+        game.playerArray[0].roundScore = updateOneScore; // adding the score per number of letters
+        $('#roundScore_1').text(updateOneScore); // Attempting to add the scores after each round
         };
-    }
+    },
+     
+      addTotalScore: function(){
+      console.log("==addTotalScore==");
+      if (game.currPlayer == 0){
+        var updateTotalOne = (game.playerArray[0].totalScore + game.playerArray[0].currRound);
+        game.playerArray[0].totalScore = updateTotalOne;
+        $('#totalScore_1').text(updateTotalOne); // this time we are trying to add up the total amount of score from each round.
+        game.playerArray[0].currRound = 0;
+        $('#roundScore_1').text(0);
+      } else {
+        game.playerArray[0].currRound = 0;
+        $('#roundScore_1').text(0);
+      };
+          
+          
+          
+          
+          
+          
 }
 }
             
