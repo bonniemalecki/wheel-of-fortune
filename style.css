@@ -38,3 +38,26 @@ h1 {
     background-color: green;
     border: 2px solid black;
 }
+
+#buttonGroup {
+  text-align: center;
+  margin: 10px;
+}
+
+.buttons {
+  background-color: #FFBB00;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.buttons:hover {
+  background-color: #FB6542;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#enterLetter {
+  width: 50%;
+}
