@@ -1,3 +1,9 @@
+function Player(name, roundScore, totalScore){
+    console.log("==Player==");
+    this.name = name;
+    this.roundScore = roundScore;
+    this.totalScore = totalScore; //Creating the constructor creating one player for now
+  }
 // in array, 0 = Bankrupt and 1 = lose a turn 
 
 var wheelr1 = [800, 700, 550, 750, 600, 0, 200, 650, 800, 600, 1, 
@@ -29,10 +35,12 @@ function myWheel() {
     if (round == 1){
         for(i = 0; i <= 23; i++){
             if (wheelr1[i] == 0) {
-                document.getElementById("txaCards").value += "BANKRUPT";
+                document.getElementById("txaCards").value += "BANKRUPT" + "\n";
             }
             else if (wheelr1[i] == 1) {
-                document.getElementById("txaCards").value += "LOSE A TURN";
+                document.getElementById("txaCards").value += "LOSE A TURN" + "\n";
+            //} else if (i == 23) {
+                //i = 0; 
             } else {
                 document.getElementById("txaCards").value += "$" + wheelr1[i] + "\n";
             }
@@ -53,12 +61,12 @@ function myWheel() {
     if (round == 3){
         for(i = 0; i <= 23; i++){
             if (wheelr3[i] == 0) {
-                document.getElementById("txaCards").value += "BANKRUPT";
+                document.getElementById("txaCards").value += "\n" + "BANKRUPT" + "\n";
             }
             else if (wheelr3[i] == 1) {
-                document.getElementById("txaCards").value += "LOSE A TURN";
+                document.getElementById("txaCards").value += "\n"+ "LOSE A TURN" + "\n";
             } else {
-                document.getElementById("txaCards").value += "$" + wheelr3[i] + "\n";
+                document.getElementById("txaCards").value += "\n" + "$" + wheelr3[i] + "\n";
             }
         } 
     }
@@ -69,6 +77,11 @@ function stopSpin() {
     clearTimeout(stopTimer); 
     clearInterval(cardTimer);
     document.getElementById("txaCards").value += "^^^^^ YOU LANDED HERE!!!"; 
+
+    var lines = $('txaCards').val().split('\n');
+    document.getElementById("txaCards").value = "" + lines[lines.length - 1]; 
 }
 
+function btnGuessClue_onclick() {
 
+}

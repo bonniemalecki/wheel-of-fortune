@@ -66,7 +66,7 @@ h1 {
     display: block;
     position: absolute;
     height: 100px;
-    width: 300px;
+    width: 200px;
     background-color: green;
     top: 48%;
     left: 5%;
@@ -81,7 +81,7 @@ h1 {
     display: block;
     position: absolute;
     height: 100px;
-    width: 300px;
+    width: 200px;
     background-color: green;
     top: 48%;
     right: 5%;
@@ -121,3 +121,160 @@ h1 {
     color: white;
     text-align: center;
 }
+
+.wheel .c {
+    border-left: 32.35px solid transparent;
+    border-right: 32.35px solid transparent;
+    width: 0;
+    height: 0;
+    border-top-right-radius: 100% 5px;
+    border-top-left-radius: 100% 5px;
+    margin-left: 217.65px;
+    margin-top: 0;
+    position: absolute;
+    transform-origin: 50% 100%;
+    z-index: 1; }
+  
+  .txt h2 {
+    text-align: center;
+    position: relative;
+    width: 30px;
+    height: 100px;
+    z-index: 1;
+    top: -240px;
+    left: -15px;
+    background-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+  
+  .txt p {
+    text-align: center;
+    position: relative;
+    width: 30px;
+    height: 100px;
+    z-index: 1;
+    top: -240px;
+    left: -15px;
+    background-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+    font-weight: bolder; }
+  
+  .wheelRotate {
+    animation: rotation 6s cubic-bezier(0.25, 0.98, 0.75, 1) forwards;
+    animation-iteration-count: infinite; }
+  
+  .ticker {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid red;
+    left: 210px;
+    z-index: 7;
+    position: sticky; }
+  
+  .wheel {
+    margin-top: 20px;
+    width: 500px;
+    height: 500px;
+    position:static;
+    z-index: 0;
+    transition: all 6s cubic-bezier(0.25, 0.98, 0.75, 1); }
+    .wheel .c--c1 {
+      color: black;
+      border-top: 250px solid lightcoral;
+      transform: rotate(0deg); }
+    .wheel .c--c2 {
+      color: black;
+      border-top: 250px solid lightcyan;
+      transform: rotate(15deg); }
+    .wheel .c--c3 {
+      color: black;
+      border-top: 250px solid lightseagreen;
+      transform: rotate(30deg); }
+    .wheel .c--c4 {
+      color: black;
+      border-top: 250px solid lightslategrey;
+      transform: rotate(45deg); }
+    .wheel .c--c5 {
+      color: black;
+      border-top: 250px solid lightgreen;
+      transform: rotate(60deg); }
+    .wheel .c--c6 {
+      color:black;
+      border-top: 250px solid lightsteelblue;
+      transform: rotate(75deg); }
+    .wheel .c--c7 {
+      color: black;
+      border-top: 250px solid lightsalmon;
+      transform: rotate(90deg); }
+    .wheel .c--c8 {
+      color: black;
+      border-top: 250px solid lightyellow;
+      transform: rotate(105deg); }
+    .wheel .c--c9 {
+      color: black;
+      border-top: 250px solid lightskyblue;
+      transform: rotate(120deg); }
+    .wheel .c--c10 {
+      color: black;
+      border-top: 250px solid lightgoldenrodyellow;
+      transform: rotate(135deg); }
+    .wheel .c--c11 {
+      color: black;
+      border-top: 250px solid lightslategray;
+      transform: rotate(150deg); }
+    .wheel .c--c12 {
+      color: black;
+      border-top: 250px solid lightpink;
+      transform: rotate(165deg); }
+    .wheel .c--c13 {
+      color: black;
+      border-top: 250px solid lightcoral;
+      transform: rotate(180deg); }
+    .wheel .c--c14 {
+      color: black;
+      border-top: 250px solid lightcyan;
+      transform: rotate(195deg); }
+    .wheel .c--c15 {
+      color: black;
+      border-top: 250px solid lightgreen;
+      transform: rotate(210deg); }
+    .wheel .c--c16 {
+      color: black;
+      border-top: 250px solid lightyellow;
+      transform: rotate(225deg); }
+    .wheel .c--c17 {
+      color: black;
+      border-top: 250px solid lightslategray;
+      transform: rotate(240deg); }
+    .wheel .c--c18 {
+      color: black;
+      border-top: 250px solid lightpink;
+      transform: rotate(255deg); }
+    .wheel .c--c19 {
+      color: black;
+      border-top: 250px solid lightsteelblue;
+      transform: rotate(270deg); }
+    .wheel .c--c20 {
+      color: black;
+      border-top: 250px solid lightseagreen;
+      transform: rotate(285deg); }
+    .wheel .c--c21 {
+      color: black;
+      border-top: 250px solid lightcoral;
+      transform: rotate(300deg); }
+    .wheel .c--c22 {
+      color: black;
+      border-top: 250px solid lightblue;
+      transform: rotate(315deg); }
+    .wheel .c--c23 {
+      color: black;
+      border-top: 250px solid lightgoldenrodyellow;
+      transform: rotate(330deg); }
+    .wheel .c--c24 {
+      color: black;
+      border-top: 250px solid lightgreen;
+      transform: rotate(345deg); }
+  
+  
+        

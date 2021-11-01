@@ -1,12 +1,7 @@
 window.onload = function(e) { //makes sure window is loaded
     console.log("==window loaded==");
 
-    function Player(name, roundScore, totalScore){
-        console.log("==Player==");
-        this.name = name;
-        this.roundScore = roundScore;
-        this.totalScore = totalScore; //Creating the constructor creating one player for now
-      };
+
 
       var gameStuff = {
         playerArray: [], //Any Defaults given blank arrays or 0 1 
@@ -106,16 +101,7 @@ window.onload = function(e) { //makes sure window is loaded
       } else {
         game.playerArray[0].currRound = 0;
         $('#roundScore_1').text(0);
-      };
-          
-          
-          
-          
-          
-          
+      }  
+    }
+  }
 }
-}
-            
-            
-            
-  

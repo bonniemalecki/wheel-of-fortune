@@ -6,7 +6,92 @@
 	<script src="wheel-of-fortune-game.js"></script>
 </head>
 <body>
-	<h1>Wheel of Fortune Game</h1>
+	<!--  JSON File Found at https://runestone.academy/runestone/books/published/fopp/Inheritance/chapterProject.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+  <h1>WHEEL OF FORTUNE!</h1>
+  <div class = "game-board">
+    <!--First Row-->
+    <div class="wall"></div> <div class="wall"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>  
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>
+    <div class="wall"></div> <div class="wall"></div>
+
+    <!--Second Row-->
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>  
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div>
+
+    <!--Third row-->
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>  
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div>
+
+    <!--Fourth Row-->
+    <div class="wall"></div> <div class="wall"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>  
+    <div class="box"></div> <div class="box"></div>
+    <div class="box"></div> <div class="box"></div> 
+    <div class="box"></div> <div class="box"></div>
+    <div class="wall"></div> <div class="wall"></div>
+    
+  <div class="player1total">Player 1</div>
+
+  <div class="player2total">Player 2</div>
+    
+  </div>
+
+ <script src="script.js"></script>
+
+		<h1>Wheel of Fortune</h1>
+		<div id="scoreBoard">
+			<table>
+			  <tr>
+				<th>Player Name</th>
+				<th>Round Score ($)</th>
+				<th>Total Score ($)</th>
+			  </tr>
+			  <tr>
+				<td id="player_1">Player 1</td>
+				<td id="roundScore_1">0</td>
+				<td id="totalScore_1">0</td>
+			  </tr>
+	
+			  <div id="buttonGroup">
+				<input type="text" id="enterLetter" placeholder="Enter a letter or finish the clue">
+				<input id="btnBuyVowel" type="button" value="BUY VOWEL" onclick ="return btnBuyVowel_onclick()"/>
+				<input id="btnGuessLetter" type="button" value="GUESS LETTER" onclick ="return btnGuessLetter_onclick()"/> 
+				<input id="btnGuessClue" type="button" value="GUESS CLUE" onclick ="return btnGuessClue_onclick()"/> 
+			</div>
+	
+			  <div id="startModal">
+				
+					<div id="modalContent">
+					  <p>Please Enter Your Name to Play!</p>
+						  <label for="userName_1">Player 1:</label>
+						  <input type="text" id="userName_1" value="Default">
+						  <button type="button" id="startGame">Start Game</button>
+						  <label for="userName_2">Player 2:</label>
+						  <input type="text" id="userName_2" value="Default">
+						  <button type="button" id="startGame">Start Game</button>
+					</div>
+				  </div>      
 		<h2>Round 1</h2>
 		<div class="ticker">		
 			</div>	
@@ -85,10 +170,13 @@
 			</div>
 			
 			<div class="center">
-				<input id="btnSpin" type="button" value="SPIN" onclick ="return btnSpin_onclick()"/>  
+				<input id="btnSpin" type="button" value="SPIN" onclick ="return btnSpin_onclick()"/>
+				<input id="btnSpkip" type="button" value="SKIP" onclick ="return btnSkip_onclick()"/> 
 			</div>
 		</div>
-		<textarea id="txaCards" cols="100" rows="20"></textarea>
+		<div style = "position:absolute; left:550px; top:650px;">
+		<textarea id="txaCards" cols="60" rows="20"></textarea>
+	</div>
 	</div>
 	</div>
 
