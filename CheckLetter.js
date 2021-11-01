@@ -11,10 +11,8 @@ window.onload = function(e) { //makes sure window is loaded
         wheelArray: [], //Take from Bonnies Work
         curClue: "",
         curValue: "",
-        activateButtons: function(){
-          //console.log("==activateButtons==");
-          //$('#startGame').on('click', game.checkUser);    // Possible to have to use the activate to start the games
-          //$('#loadPuzzle').on('click', game.loadPuzzle);
+        letters: B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z,  
+        
         },
         checkUser: function(){
           console.log("--checkUser--");
@@ -32,9 +30,9 @@ window.onload = function(e) { //makes sure window is loaded
         gameStuff.playerArray.push(player1);
          },
 
-        buyVowel: function(){
+        function buyVowel(){
             console.log("--buyVowel--");
-            var guessedVowel = $('#enterLetter').val();
+            var guessedVowel = this.vowels.val();
             var vowels = "a e i o u"; // Create the vowel list.
             if (game.currPlayer == 0){ 
               if (game.playerArray[0].roundScore > 250) {
@@ -52,14 +50,14 @@ window.onload = function(e) { //makes sure window is loaded
         }
     },
 
-    checkLetter: function(){
+    function checkLetter(){
         console.log("--checkLetter--");                      //Makes sure that the letter entered is on the board for the puzzle
-        var guessedLetter = $('#enterLetter').val();
+        var guessedLetter = this.letters.val();
         if (guessedLetter.length != 0) {
           var letterCount = 0;
           for (var i = 0; i < game.currentClue.length; i++) {
             if (game.currClue[i] == guessedLetter) {
-              $('#letter_' + i + '> p').css("visibility", "visible"); //Creating a loop that allows us to 
+                (letters + i).css("visibility", "visible"); //Creating a loop that allows us to //Trying to display the screen letters
               letterCount++;
             } else {
               console.log("==checkNextLetter==");
@@ -97,7 +95,7 @@ window.onload = function(e) { //makes sure window is loaded
         game.playerArray[0].totalScore = updateTotalOne;
         $('#totalScore_1').text(updateTotalOne); // this time we are trying to add up the total amount of score from each round.
         game.playerArray[0].currRound = 0;
-        $('#roundScore_1').text(0);
+        $('#roundScore_1').text(0); //Take from the HTML
       } else {
         game.playerArray[0].currRound = 0;
         $('#roundScore_1').text(0);
