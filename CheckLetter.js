@@ -30,7 +30,7 @@ window.onload = function(e) { //makes sure window is loaded
         gameStuff.playerArray.push(player1);
          },
 
-        function buyVowel(){
+        function btnbuyVowel_onclick(){
             console.log("--buyVowel--");
             var guessedVowel = this.vowels.val();
             var vowels = "a e i o u"; // Create the vowel list.
@@ -50,7 +50,7 @@ window.onload = function(e) { //makes sure window is loaded
         }
     },
 
-    function checkLetter(){
+    function btncheckLetter_onclick(){
         console.log("--checkLetter--");                      //Makes sure that the letter entered is on the board for the puzzle
         var guessedLetter = this.letters.val();
         if (guessedLetter.length != 0) {
