@@ -38,8 +38,11 @@ window.onload = function(e) { //makes sure window is loaded
               if (game.playerArray[0].roundScore > 250) {
                 alert("Please enter a vowel and click guess letter."); //If user has more then 250 to spend on a vowel
                 var correctValue = vowels.indexOf(guessedVowel);
-                if (correctValue == -1) {
-                  alert("Please guess a vowel")        // If user does not enter a valid Vowel
+                if (correctValue == -1)
+                 alert("Please guess a vowel")        // If user does not enter a valid Vowel
+                } else if {
+                (game.playerArray[0].roundScore < 250) {
+                alert("Player needs at least $250 to buy a vowel"); 
                 } else {
                   var newScoreOne = game.playerArray[0].roundScore - 250; //Takes away 250 if the vowel is bought and guessed
                   game.playerArray[0].roundScore = newScoreOne;
