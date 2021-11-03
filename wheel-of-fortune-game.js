@@ -72,10 +72,13 @@ function myWheel() {
             }
             else if (wheelr1[i] == 1) {
                 document.getElementById("txaCards").value += "\n" + "LOSE A TURN";
+            } else if (i == 23) {
+                document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
+                i = 0; 
             } else {
                 document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i]; 
             }
-
+            i++; 
         } 
     }
     if (round == 2){
@@ -85,8 +88,9 @@ function myWheel() {
             }
             else if (wheelr1[i] == 1) {
                 document.getElementById("txaCards").value += "\n" + "LOSE A TURN";
-            //} else if (i == 23) {
-                //i = 0; 
+            } else if (i == 23) {
+                document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
+                i = 0; 
             } else {
                 document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
             }
@@ -99,8 +103,9 @@ function myWheel() {
             }
             else if (wheelr1[i] == 1) {
                 document.getElementById("txaCards").value += "\n" + "LOSE A TURN";
-            //} else if (i == 23) {
-                //i = 0; 
+            } else if (i == 23) {
+                document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
+                i = 0; 
             } else {
                 document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
             }
