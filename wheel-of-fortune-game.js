@@ -15,6 +15,7 @@ var stopTimer; // one time timer that stops spin
 var cardTimer;  // repeated timer that displays cards for the spin
 var i = 0; 
 var round = 1; 
+var done = 0; 
 
 var clues = ["Adam Sandler As Happy Gilmore",
 "Anthony Hopkins As Nixon",
@@ -49,7 +50,7 @@ function GenRandNum(min, max) {
     }
 
 function btn_Startonclick() {
-    var clueNum = GenRandNum(0, 22)
+    var clueNum = GenRandNum(0, 22);
     clue = clues[clueNum]; 
 }
 
@@ -63,19 +64,18 @@ function btnSpin_onclick() {
 }
 
 function myWheel() { 
-    // goes through array of cards for whatever round we are in 
+    // goes through array of cards for whatever round we are in
     if (round == 1){
-        for(i = 0; i <= 23; i++){
+        while (done == 0){
             if (wheelr1[i] == 0) {
                 document.getElementById("txaCards").value += "\n" + "BANKRUPT";
             }
             else if (wheelr1[i] == 1) {
                 document.getElementById("txaCards").value += "\n" + "LOSE A TURN";
-            //} else if (i == 23) {
-                //i = 0; 
             } else {
-                document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i];
+                document.getElementById("txaCards").value += "\n" + "$" + wheelr1[i]; 
             }
+
         } 
     }
     if (round == 2){
@@ -106,16 +106,17 @@ function myWheel() {
             }
         } 
     }
-    
-} 
+}
+ 
 
 function stopSpin() { 
+    done = 1; 
     clearTimeout(stopTimer); 
     clearInterval(cardTimer);
     document.getElementById("txaCards").value += "\n" + "^^^^^ YOU LANDED HERE!!!"; 
 
-    var lines = $('txaCards').val().split('\n');
-    document.getElementById("txaCards").value = "" + lines[lines.length - 1]; 
+    //var lines = $('txaCards').val().split('\n');
+    //document.getElementById("txaCards").value = "" + lines[lines.length - 1]; 
 }
 
 function btnGuessClue_onclick() {
