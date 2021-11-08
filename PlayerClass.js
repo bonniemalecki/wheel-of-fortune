@@ -22,4 +22,62 @@ var WheelGame = (function () {
             } else {
                 alert("You need more than $250 to buy a vowel");
             }
-        }
+        });
+
+        var spinTheWheel = function () {
+          wheel.spin(function (valueSpun) {
+              if (isNaN(valueSpun)) {
+                  alert(valueSpun);
+              } else {
+                  //is a valid number
+                  if (valueSpun === 0) {
+                      alert('Bankrupt!');
+                      _this.currentMoney = 0;
+                  } else {
+                      //spun greater than 0
+                      var amountFound = _this.createGuessPrompt(valueSpun);
+                      _this.currentMoney += (valueSpun * amountFound);
+                  }
+                  
+                  
+                  _this.updateMoney();
+
+                  updateMoney = function () {
+                    money.innerHTML = this.currentMoney;
+                };
+                
+                guessLetter = function (guess, isVowel, solvingPuzzle) {
+                  var timesFound = 0;
+                  solvingPuzzle = solvingPuzzle === undefined ? false : true;
+                  //find it:
+                  if (guess.length && !this.puzzleSolved) {
+                      if (!solvingPuzzle && !isVowel && (guess in vowels.toObject())) {
+                          alert("Cannot guess a vowel right now!");
+                          return false;
+                      }
+                      if (!solvingPuzzle && isVowel && !(guess in vowels.toObject())) {
+                          alert("Cannot guess a consanant right now!");
+                          return false;
+                      }
+                      if (guess in this.guessedArray) {
+                          return 0;
+                      }
+                      for (var i = 0; i < this.currentPuzzleArray.length; ++i) {
+                          if (guess == this.currentPuzzleArray[i]) {
+                              wordDisplay.showLetter(i, guess);
+                              ++timesFound;
+                          }
+                      }
+                      if (timesFound > 0) {
+                          this.guessedArray.push(guess);
+                          if (this.guessedArray.length == this.lettersInPuzzle.length) {
+                              run_confetti();
+                              alert("PUZZLE SOLVED!");
+                              this.puzzleSolved = true;  
+                          }
+                      }
+                      return timesFound;
+                  }
+                  return false;
+      
+              };        
