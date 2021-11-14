@@ -20,6 +20,8 @@ var p2;
 var p2rscore = 0;
 var p2tscore = 0; 
 
+var spinNum = 0; 
+var turn = 1; 
 
 var clues = ["Adam Sandler As Happy Gilmore",
 "Anthony Hopkins As Nixon",
@@ -67,7 +69,7 @@ function btn_Startonclick() {
     
     // disables and enables appropriate buttons
     document.getElementById("btnSpin").disabled = false;
-    document.getElementById("btnStart").disabled = true;
+    document.getElementById("btnStart").enabled = false;
 }
 
 
@@ -78,13 +80,7 @@ function btnSpin_onclick() {
     //cardTimer = setInterval(myWheel, 1000);
     //stopTimer = setTimeout(stopSpin, spinTime);
 
-    // disables and enables appropriate buttons
-    document.getElementById("btnBuyVowel").disabled = false;
-    document.getElementById("btnGuessLetter").disabled = false;
-    document.getElementById("btnGuessClue").disabled = false;
-    document.getElementById("btnSpin").disabled = true;
-
-    var spinNum = GenRandNum(0, 23);
+    spinNum = GenRandNum(0, 23);
     if (round == 1) {
         for (currCard = 0; currCard <= spinNum; currCard++) {
             if (wheelr1[currCard] == 0) {
@@ -128,7 +124,33 @@ function btnSpin_onclick() {
         }
     }
 
-    alert("You landed on " + "$" + wheelr1[spinNum] + "! \nPlease take a guess now."); 
+    if (wheelr1[spinNum] == 0) {
+        if (turn == 1) {
+            p1rscore = 0; 
+            turn = 2; 
+        } else {
+            p2rscore = 0; 
+            turn = 1; 
+        }
+        alert("You landed on BANKRUPT! \nIt is now player " + turn + "'s turn."); 
+    }
+    else if (wheelr1[spinNum] == 1) {
+        if (turn == 1) {
+            turn = 2; 
+        } else {
+            turn = 1; 
+        }
+        alert("You landed on LOSE A TURN! \nIt is now player " + turn + "'s turn."); 
+    } else {
+        alert("You landed on " + "$" + wheelr1[spinNum] + "! \nPlease take a guess now.");
+    } 
+
+    // disables and enables appropriate buttons
+    document.getElementById("btnBuyVowel").disabled = false;
+    document.getElementById("btnGuessLetter").disabled = false;
+    document.getElementById("btnGuessClue").disabled = false;
+    document.getElementById("btnSpin").disabled = true;
+    document.getElementById("btnStart").enabled = false;
 }
 
 /* function myWheel() { 
@@ -194,11 +216,77 @@ function btnSpin_onclick() {
 */
 
 function btnGuessClue_onclick() {
-    var guess = document.getElementById('enterLetter').value; 
+    var guess = document.getElementById("txtGuess").value; 
     if (guess == clue) {
         alert("Correct!");
+        if (turn == 1) {
+            p1 += wheelr1[spinNum]; 
+        } else {
+            p2 += wheelr1[spinNum]; 
+        }
         round++;  
     } else {
+        if (turn == 1) {
+            turn = 2; 
+        } else {
+            turn = 1; 
+        }
         alert("Wrong! It is now the other player's turn"); 
+    }
+}
+
+function btnGuessLetter_onclick() {
+    var guess = document.getElementById("txtGuess").value; 
+    var a = 'a'; 
+    var e = 'e'; 
+    var i = 'i';
+    var o = 'o'; 
+    var u = 'u'; 
+    if (guess == a || guess == e || guess == i || guess == o || guess == u) {
+        alert("Please buy a vowel if you are going to guess a vowel."); 
+    } else {
+        if (clue.includes(guess)) {
+            alert("Your guess was correct");
+            if (turn == 1) {
+                p1 += wheelr1[spinNum]; 
+            } else {
+                p2 += wheelr1[spinNum]; 
+            }
+        } else {
+            alert("Your guess was incorrect");
+            if (turn == 1) {
+                turn = 2; 
+            } else {
+                turn = 1; 
+            }
+        }
+    }
+}
+
+function btnBuyVowel_onclick() {
+    var guess = document.getElementById("txtGuess").value; 
+    var a = 'a'; 
+    var e = 'e'; 
+    var i = 'i';
+    var o = 'o'; 
+    var u = 'u'; 
+    if (guess != a && guess != e && guess != i && guess != o && guess != u) {
+        alert("Please enter a valid vowel if you are going to buy a vowel."); 
+    } else {
+        if (clue.includes(guess)) {
+            alert("Your guess was correct");
+            if (turn == 1) {
+                p1 += wheelr1[spinNum]; 
+            } else {
+                p2 += wheelr1[spinNum]; 
+            }
+        } else {
+            alert("Your guess was incorrect");
+            if (turn == 1) {
+                turn = 2; 
+            } else {
+                turn = 1; 
+            }
+        }
     }
 }
