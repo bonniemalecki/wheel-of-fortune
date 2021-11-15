@@ -72,10 +72,10 @@
 			  </tr>
 	
 			  <div id="buttonGroup">
-				<input type="text" id="enterLetter" placeholder="Enter a letter or finish the clue">
-				<input id="btnBuyVowel" type="button" value="BUY VOWEL" onclick ="return btnBuyVowel_onclick()"/>
-				<input id="btnGuessLetter" type="button" value="GUESS LETTER" onclick ="return btnGuessLetter_onclick()"/> 
-				<input id="btnGuessClue" type="button" value="GUESS CLUE" onclick ="return btnGuessClue_onclick()"/> 
+				<input type="text" id="txtGuess" placeholder="Enter guess"/>
+				<input id="btnBuyVowel" type="button" value="BUY VOWEL" disabled="true" onclick ="return btnBuyVowel_onclick()"/>
+				<input id="btnGuessLetter" type="button" value="GUESS LETTER" disabled="true" onclick ="return btnGuessLetter_onclick()"/> 
+				<input id="btnGuessClue" type="button" value="GUESS CLUE" disabled="true" onclick ="return btnGuessClue_onclick()"/> 
 			</div>
 	
 			  <div id="startModal">
@@ -83,9 +83,9 @@
 					<div id="modalContent">
 					  <p>Please Enter Your Name to Play!</p>
 						  <label for="userName_1">Player 1:</label>
-						  <input type="text" id="userName_1" value="Default">
+						  <input type="text" id="userName_1" placeholder="Default">
 						  <label for="userName_2">Player 2:</label>
-						  <input type="text" id="userName_2" value="Default">
+						  <input type="text" id="userName_2" placeholder="Default">
 						  <input id="btnPlayer1" type="button" value="START GAME" onclick ="return btn_Startonclick()"/> 
 					</div>
 				  </div>      
@@ -167,8 +167,7 @@
 			</div>
 			
 			<div class="center">
-				<input id="btnSpin" type="button" value="SPIN" onclick ="return btnSpin_onclick()"/>
-				<input id="btnSpkip" type="button" value="SKIP" onclick ="return btnSkip_onclick()"/> 
+				<input id="btnSpin" type="button" value="SPIN" disabled="true" onclick ="return btnSpin_onclick()"/>
 			</div>
 		</div>
 		<div style = "position:absolute; left:550px; top:650px;">
@@ -258,7 +257,7 @@
 			</div>
 
 			<div class="center">
-				<img src="spin.png" alt="Spin" width="60" height="60" onclick="spin_onclick()">
+				<input id="btnSpin" type="button" value="SPIN" disabled="true" onclick ="return btnSpin_onclick()"/>
 			</div>
 	</div>
 
@@ -346,7 +345,7 @@
 			</div>
 
 			<div class="center">
-				<img src="spin.png" alt="Spin" width="60" height="60" onclick="spin_onclick()">
+				<input id="btnSpin" type="button" value="SPIN" disabled="true" onclick ="return btnSpin_onclick()"/>
 			</div>
 
 		</div>
