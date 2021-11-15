@@ -144,6 +144,10 @@ function btnSpin_onclick() {
             turn = 1; 
         }
         alert("You landed on BANKRUPT! \nIt is now player " + turn + "'s turn."); 
+        // disables and enables appropriate buttons
+        document.getElementById("btnBuyVowel").disabled = true;
+        document.getElementById("btnGuessLetter").disabled = true;
+        document.getElementById("btnGuessClue").disabled = true;
     }
     else if (wheelr1[spinNum] == 1) {
         if (turn == 1) {
@@ -152,6 +156,10 @@ function btnSpin_onclick() {
             turn = 1; 
         }
         alert("You landed on LOSE A TURN! \nIt is now player " + turn + "'s turn."); 
+        // disables and enables appropriate buttons
+        document.getElementById("btnBuyVowel").disabled = true;
+        document.getElementById("btnGuessLetter").disabled = true;
+        document.getElementById("btnGuessClue").disabled = true;
     } else {
         alert("You landed on " + "$" + wheelr1[spinNum] + "! \nPlease take a guess now.");
         // disables and enables appropriate buttons
@@ -240,6 +248,10 @@ function btnGuessClue_onclick() {
             turn = 1; 
         }
         alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+        // disables and enables appropriate buttons
+        document.getElementById("btnBuyVowel").disabled = true;
+        document.getElementById("btnGuessLetter").disabled = true;
+        document.getElementById("btnGuessClue").disabled = true;
     }
 }
 
@@ -269,6 +281,10 @@ function btnGuessLetter_onclick() {
                 turn = 1; 
             }
             alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+            // disables and enables appropriate buttons
+            document.getElementById("btnBuyVowel").disabled = true;
+            document.getElementById("btnGuessLetter").disabled = true;
+            document.getElementById("btnGuessClue").disabled = true;
         }
     }
 }
@@ -306,6 +322,10 @@ function btnBuyVowel_onclick() {
                 turn = 1; 
             }
             alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+            // disables and enables appropriate buttons
+            document.getElementById("btnBuyVowel").disabled = true;
+            document.getElementById("btnGuessLetter").disabled = true;
+            document.getElementById("btnGuessClue").disabled = true;
         }
     }
 }
