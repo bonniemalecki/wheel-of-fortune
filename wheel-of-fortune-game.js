@@ -1,3 +1,4 @@
+// different arrays for the different rounds
 // in array, 0 = Bankrupt and 1 = lose a turn 
 var wheelr1 = [800, 700, 550, 750, 600, 0, 200, 650, 800, 600, 1, 
 950, 350, 300, 2500, 0, 1, 900, 600, 900, 650, 800, 700, 650]; 
@@ -7,20 +8,23 @@ var wheelr3 = [650, 850, 200, 450, 150, 0, 800, 1, 300, 200, 250,
 250, 0, 100, 200, 950, 900, 300, 3500, 100, 200, 700, 650, 450]; 
 
 //var stopTimer; // one time timer that stops spin
-//var cardTimer;  // repeated timer that displays cards for the spin
-var currCard = 0; 
+//var cardTimer;  // repeated timer that displays cards for the spin 
+
 var round = 1; 
 var done = 0; 
+var spinNum = 0;
 
+// player 1 info
 var p1;
 var p1rscore = 0;
 var p1tscore = 0; 
 
+// player 2 info
 var p2;
 var p2rscore = 0;
 var p2tscore = 0; 
 
-var spinNum = 0; 
+// who's turn 
 var turn = 1; 
 
 var clues = ["Adam Sandler As Happy Gilmore",
@@ -49,6 +53,7 @@ var clues = ["Adam Sandler As Happy Gilmore",
 ]; 
 var clue; 
 
+// generates random number
 function GenRandNum(min, max) {
     var myTarget;
     myTarget = Math.floor(Math.random() * ((max + 1) - min)) + min;
@@ -60,7 +65,7 @@ function btn_Startonclick() {
     var clueNum = GenRandNum(0, 22);
     clue = clues[clueNum]; 
 
-    // sets up players
+    // sets up players' names
     p1 = document.getElementById("userName_1").value; 
     p2 = document.getElementById("userName_2").value; 
 
@@ -80,7 +85,10 @@ function btnSpin_onclick() {
     //cardTimer = setInterval(myWheel, 1000);
     //stopTimer = setTimeout(stopSpin, spinTime);
 
+    var currCard = 0; 
     spinNum = GenRandNum(0, 23);
+
+    // goes through wheel for round 1
     if (round == 1) {
         for (currCard = 0; currCard <= spinNum; currCard++) {
             if (wheelr1[currCard] == 0) {
@@ -93,6 +101,7 @@ function btnSpin_onclick() {
             } 
         }
     }
+    // goes through wheel for round 2
     else if (round == 2) {
         for (currCard = 0; currCard <= spinNum; currCard++) {
             if (wheelr2[currCard] == 0) {
@@ -108,6 +117,7 @@ function btnSpin_onclick() {
             } 
         }
     }
+    // goes through wheel for round 3
     else {
         for (currCard = 0; currCard <= spinNum; currCard++) {
             if (wheelr3[currCard] == 0) {
@@ -124,6 +134,7 @@ function btnSpin_onclick() {
         }
     }
 
+    // determines appropriate action based off of card landed on 
     if (wheelr1[spinNum] == 0) {
         if (turn == 1) {
             p1rscore = 0; 
@@ -143,14 +154,11 @@ function btnSpin_onclick() {
         alert("You landed on LOSE A TURN! \nIt is now player " + turn + "'s turn."); 
     } else {
         alert("You landed on " + "$" + wheelr1[spinNum] + "! \nPlease take a guess now.");
+        // disables and enables appropriate buttons
+        document.getElementById("btnBuyVowel").disabled = false;
+        document.getElementById("btnGuessLetter").disabled = false;
+        document.getElementById("btnGuessClue").disabled = false;
     } 
-
-    // disables and enables appropriate buttons
-    document.getElementById("btnBuyVowel").disabled = false;
-    document.getElementById("btnGuessLetter").disabled = false;
-    document.getElementById("btnGuessClue").disabled = false;
-    document.getElementById("btnSpin").disabled = true;
-    document.getElementById("btnStart").enabled = false;
 }
 
 /* function myWheel() { 
@@ -231,7 +239,7 @@ function btnGuessClue_onclick() {
         } else {
             turn = 1; 
         }
-        alert("Wrong! It is now the other player's turn"); 
+        alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
     }
 }
 
@@ -242,23 +250,25 @@ function btnGuessLetter_onclick() {
     var i = 'i';
     var o = 'o'; 
     var u = 'u'; 
+
+    // checks to make sure guess isn't a vowel
     if (guess == a || guess == e || guess == i || guess == o || guess == u) {
         alert("Please buy a vowel if you are going to guess a vowel."); 
     } else {
         if (clue.includes(guess)) {
-            alert("Your guess was correct");
+            alert("Your guess was correct! Please guess again.");
             if (turn == 1) {
                 p1 += wheelr1[spinNum]; 
             } else {
                 p2 += wheelr1[spinNum]; 
             }
         } else {
-            alert("Your guess was incorrect");
             if (turn == 1) {
                 turn = 2; 
             } else {
                 turn = 1; 
             }
+            alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
         }
     }
 }
@@ -270,9 +280,17 @@ function btnBuyVowel_onclick() {
     var i = 'i';
     var o = 'o'; 
     var u = 'u'; 
+    
+    // validates guess is a vowel 
     if (guess != a && guess != e && guess != i && guess != o && guess != u) {
         alert("Please enter a valid vowel if you are going to buy a vowel."); 
     } else {
+        if (turn == 1) {
+            p1rscore = p1rscore - 250; 
+        }
+        if (turn == 2) {
+            p2rscore = p2rscore - 250; 
+        }
         if (clue.includes(guess)) {
             alert("Your guess was correct");
             if (turn == 1) {
@@ -280,13 +298,14 @@ function btnBuyVowel_onclick() {
             } else {
                 p2 += wheelr1[spinNum]; 
             }
+        // guess was wrong. change turns 
         } else {
-            alert("Your guess was incorrect");
             if (turn == 1) {
                 turn = 2; 
             } else {
                 turn = 1; 
             }
+            alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
         }
     }
 }
