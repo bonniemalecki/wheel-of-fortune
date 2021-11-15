@@ -15,7 +15,7 @@
 </head>
   <h1>WHEEL OF FORTUNE!</h1>
   <div class = "game-board">
-    <!--First Row-->
+<!--First Row-->
     <div class="wall"></div> <div class="wall"></div>
     <div id = "box1" class="box"></div>
 	<div id = "box2" class="box"></div> 
@@ -78,25 +78,13 @@
 	<div class="wall"></div>
     
  <!-- <div class="player1total">Player 1</div>
-
   <div class="player2total">Player 2</div> -->
     
   </div>
 
 		<h1>WHEEL OF FORTUNE!</h1>
 		<div id="scoreBoard">
-			<table>
-			  <tr>
-				<th>Player Name</th>
-				<th>Round Score ($)</th>
-				<th>Total Score ($)</th>
-			  </tr>
-			  <tr>
-				<td id="player_1">Player 1</td>
-				<td id="roundScore_1">0</td>
-				<td id="totalScore_1">0</td>
-			  </tr>
-	
+			
 			  <div id="buttonGroup">
 				<input type="text" id="txtGuess" placeholder="Enter guess"/>
 				<input id="btnBuyVowel" type="button" value="BUY VOWEL" disabled="true" onclick ="return btnBuyVowel_onclick()"/>
@@ -109,9 +97,17 @@
 					<div id="modalContent">
 					  <p>Please Enter Your Name to Play!</p>
 						  <label for="userName_1">Player 1:</label>
-						  <input type="text" id="userName_1" placeholder="Default"> <br>
+						  <input type="text" id="userName_1" placeholder="Default">
+						  <label for="roundScore_1">P1 Score:</label>
+						  <input type="text" id="roundScore_1" disabled>
+						  <label for="totalScore_1">P1 Total Score:</label>
+						  <input type="text" id="totalScore_1" disabled> <br>
 						  <label for="userName_2">Player 2:</label>
 						  <input type="text" id="userName_2" placeholder="Default">
+						  <label for="roundScore_2">P2 Score:</label>
+						  <input type="text" id="roundScore_2" disabled>
+						  <label for="totalScore_2">P2 Total Score:</label>
+						  <input type="text" id="totalScore_2" disabled> <br> <br> <br>
 						  <input id="btnPlayer1" type="button" value="START GAME" onclick ="return btn_Startonclick()"/> 
 					</div>
 				  </div>      
