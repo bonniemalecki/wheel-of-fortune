@@ -276,6 +276,7 @@ function btnGuessClue_onclick() {
 
 function btnGuessLetter_onclick() {
     var guess = document.getElementById("txtGuess").value; 
+    var lettersFound = 0;
     var a = 'a'; 
     var e = 'e'; 
     var i = 'i';
@@ -290,6 +291,7 @@ function btnGuessLetter_onclick() {
             for (var i = 0; i <= clue.length; i++) {
                 if (clue.charAt(i) == guess) {
                     document.getElementById("box" + i).innerHTML = clue.charAt(i);
+                    
                 }
             }
             alert("Your guess was correct! Please guess again.");
