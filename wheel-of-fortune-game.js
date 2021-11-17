@@ -69,18 +69,23 @@ function btn_Startonclick() {
 
     // sets up players' names and scores
     p1 = document.getElementById("userName_1").value; 
-    p2 = document.getElementById("userName_2").value; 
-    document.getElementById("roundScore_1").value = p1rscore; 
-    document.getElementById("totalScore_1").value = p1tscore; 
-    document.getElementById("roundScore_2").value = p2rscore; 
-    document.getElementById("totalScore_2").value = p2tscore; 
-
-    // prompts player 1 to take spin
-    alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
+    p2 = document.getElementById("userName_2").value;
     
-    // disables and enables appropriate buttons
-    document.getElementById("btnSpin").disabled = false;
-    document.getElementById("btnStart").enabled = false;
+    if (p1.length < 1 || p2.length < 1) {
+        alert("Please enter your names to start the game.")
+    } else {
+        document.getElementById("roundScore_1").value =  "$" + p1rscore; 
+        document.getElementById("totalScore_1").value =  "$" + p1tscore; 
+        document.getElementById("roundScore_2").value =  "$" + p2rscore; 
+        document.getElementById("totalScore_2").value =  "$" + p2tscore; 
+
+        // prompts player 1 to take spin
+        alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
+    
+        // disables and enables appropriate buttons
+        document.getElementById("btnSpin").disabled = false;
+        document.getElementById("btnStart").enabled = false;
+    }
 }
 
 
@@ -239,11 +244,11 @@ function btnSpin_onclick() {
 
 function btnGuessClue_onclick() {
     var guess = document.getElementById("txtGuess").value; 
-    if (guess == clue) {
+    if (guess.toUpperCase() == clue.toUpperCase()) {
         for (var i = 0; i <= clue.length; i++) {
-            document.getElementById("box" + i).innerHTML = clue.charAt(i);
+            document.getElementById("box" + i).innerHTML = clue.toUpperCase().charAt(i);
         }
-        alert("Correct!");
+        alert("Your guess was correct! Please guess again.");
         if (turn == 1) {
             p1rscore += wheelr1[spinNum];
             p1tscore += p1rscore; 
@@ -276,7 +281,6 @@ function btnGuessClue_onclick() {
 
 function btnGuessLetter_onclick() {
     var guess = document.getElementById("txtGuess").value; 
-    var lettersFound = 0;
     var a = 'a'; 
     var e = 'e'; 
     var i = 'i';
@@ -284,14 +288,15 @@ function btnGuessLetter_onclick() {
     var u = 'u'; 
 
     // checks to make sure guess isn't a vowel
-    if (guess == a || guess == e || guess == i || guess == o || guess == u) {
+    if (guess.toUpperCase() == a.toUpperCase() || guess.toUpperCase() == e.toUpperCase() || 
+            guess.toUpperCase() == i.toUpperCase() || guess.toUpperCase() == o.toUpperCase() || 
+            guess.toUpperCase() == u.toUpperCase()) {
         alert("Please buy a vowel if you are going to guess a vowel."); 
     } else {
-        if (clue.includes(guess)) {
+        if (clue.toUpperCase().includes(guess.toUpperCase())) {
             for (var i = 0; i <= clue.length; i++) {
-                if (clue.charAt(i) == guess) {
-                    document.getElementById("box" + i).innerHTML = clue.charAt(i);
-                    
+                if (clue.toUpperCase().charAt(i) == guess.toUpperCase()) {
+                    document.getElementById("box" + i).innerHTML = clue.toUpperCase().charAt(i);
                 }
             }
             alert("Your guess was correct! Please guess again.");
@@ -332,55 +337,71 @@ function btnBuyVowel_onclick() {
     var i = 'i';
     var o = 'o'; 
     var u = 'u'; 
+
+    var bought = 1; 
     
     // validates guess is a vowel 
-    if (guess != a && guess != e && guess != i && guess != o && guess != u) {
-        alert("Please enter a valid vowel if you are going to buy a vowel."); 
+    if (guess.toUpperCase() != a.toUpperCase() && guess.toUpperCase() != e.toUpperCase() && guess.toUpperCase() != i.toUpperCase() && guess.toUpperCase() != o.toUpperCase() && guess.toUpperCase() != u.toUpperCase()) {
+        alert("Please enter a valid vowel if you are going to buy a vowel.");
     } else {
         if (turn == 1) {
-            p1rscore = p1rscore - 250; 
+            if (p1tscore < 250) {
+                alert("You don't have enough money to buy a vowel.");
+                bought = 0; 
+            } else {
+                p1rscore = p1rscore - 250; 
+                p1tscore = p1tscore - 250; 
+            }
             document.getElementById("roundScore_1").value = "$" + p1rscore; 
             document.getElementById("totalScore_1").value = "$" + p1tscore; 
         }
         if (turn == 2) {
-            p2rscore = p2rscore - 250; 
+            if (p2tscore < 250) {
+                alert("You don't have enough money to buy a vowel.")
+                bought = 0; 
+            } else {
+                p2rscore = p2rscore - 250; 
+                p2tscore = p2tscore - 250; 
+            }
             document.getElementById("roundScore_2").value = "$" + p2rscore; 
             document.getElementById("totalScore_2").value = "$" + p2tscore;
         }
-        if (clue.includes(guess)) {
-            for (var i = 0; i <= clue.length; i++) {
-                if (clue.charAt(i) == guess) {
-                    document.getElementById("box" + i).innerHTML = clue.charAt(i);
+        if (bought == 1) {
+            if (clue.toUpperCase().includes(guess.toUpperCase())) {
+                for (var i = 0; i <= clue.length; i++) {
+                    if (clue.toUpperCase().charAt(i) == guess.toUpperCase()) {
+                        document.getElementById("box" + i).innerHTML = clue.toUpperCase().charAt(i);
+                    }
                 }
-            }
-            alert("Your guess was correct");
-            if (turn == 1) {
-                p1rscore += wheelr1[spinNum];
-                p1tscore += p1rscore; 
-                document.getElementById("roundScore_1").value = "$" + p1rscore; 
-                document.getElementById("totalScore_1").value = "$" + p1tscore; 
-                document.getElementById("roundScore_2").value = "$" + p2rscore; 
-                document.getElementById("totalScore_2").value = "$" + p2tscore;  
+                alert("Your guess was correct");
+                if (turn == 1) {
+                    p1rscore += wheelr1[spinNum];
+                    p1tscore += p1rscore; 
+                    document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                    document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                    document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                    document.getElementById("totalScore_2").value = "$" + p2tscore;  
+                } else {
+                    p2rscore += wheelr1[spinNum];
+                    p2tscore += p2rscore; 
+                    document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                    document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                    document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                    document.getElementById("totalScore_2").value = "$" + p2tscore; 
+                }
+            // guess was wrong. change turns 
             } else {
-                p2rscore += wheelr1[spinNum];
-                p2tscore += p2rscore; 
-                document.getElementById("roundScore_1").value = "$" + p1rscore; 
-                document.getElementById("totalScore_1").value = "$" + p1tscore; 
-                document.getElementById("roundScore_2").value = "$" + p2rscore; 
-                document.getElementById("totalScore_2").value = "$" + p2tscore; 
+                if (turn == 1) {
+                    turn = 2; 
+                } else {
+                    turn = 1; 
+                }
+                alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+                // disables and enables appropriate buttons
+                document.getElementById("btnBuyVowel").disabled = true;
+                document.getElementById("btnGuessLetter").disabled = true;
+                document.getElementById("btnGuessClue").disabled = true;
             }
-        // guess was wrong. change turns 
-        } else {
-            if (turn == 1) {
-                turn = 2; 
-            } else {
-                turn = 1; 
-            }
-            alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
-            // disables and enables appropriate buttons
-            document.getElementById("btnBuyVowel").disabled = true;
-            document.getElementById("btnGuessLetter").disabled = true;
-            document.getElementById("btnGuessClue").disabled = true;
         }
     }
 }
