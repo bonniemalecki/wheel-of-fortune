@@ -27,7 +27,7 @@ var p2tscore = 0;
 // who's turn 
 var turn = 1; 
 
-var clues = ["Adam Sandler As Happy Gilmore",
+const clues = ["Adam Sandler As Happy Gilmore",
 "Anthony Hopkins As Nixon",
 "Bob Denver As Gilligan",
 "Candice Bergen As Murphy Brown",
@@ -50,8 +50,9 @@ var clues = ["Adam Sandler As Happy Gilmore",
 "Tom Hanks As Forrest Gump",
 "Tom Selleck As Magnum P.I.",
 "Val Kilmer As Batman"
-]; 
-var clue; 
+];
+
+var clue = ""; 
 
 // generates random number
 function GenRandNum(min, max) {
@@ -61,20 +62,18 @@ function GenRandNum(min, max) {
     }
 
 function btn_Startonclick() {
+    
     // determines the clue for the first round randomly 
     var clueNum = GenRandNum(0, 22);
     clue = clues[clueNum]; 
 
-    // sets up players' names and starting scores.
+    // sets up players' names and scores
     p1 = document.getElementById("userName_1").value; 
-    p2 = document.getElementById("userName_2").value;
-    p1rscore = document.getElementById("roundScore_1").value = 0;
-    p1tscore = document.getElementById("totalScore_1").value = 0;
-    p2rscore = document.getElementById("roundScore_2").value = 0;
-    p2tscore = document.getElementById("totalScore_2").value = 0;
-    
-    
-    
+    p2 = document.getElementById("userName_2").value; 
+    document.getElementById("roundScore_1").value = p1rscore; 
+    document.getElementById("totalScore_1").value = p1tscore; 
+    document.getElementById("roundScore_2").value = p2rscore; 
+    document.getElementById("totalScore_2").value = p2tscore; 
 
     // prompts player 1 to take spin
     alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
@@ -241,11 +240,24 @@ function btnSpin_onclick() {
 function btnGuessClue_onclick() {
     var guess = document.getElementById("txtGuess").value; 
     if (guess == clue) {
+        for (var i = 0; i <= clue.length; i++) {
+            document.getElementById("box" + i).innerHTML = clue.charAt(i);
+        }
         alert("Correct!");
         if (turn == 1) {
-            p1 += wheelr1[spinNum]; 
+            p1rscore += wheelr1[spinNum];
+            p1tscore += p1rscore; 
+            document.getElementById("roundScore_1").value = "$" + p1rscore; 
+            document.getElementById("totalScore_1").value = "$" + p1tscore; 
+            document.getElementById("roundScore_2").value = "$" + p2rscore; 
+            document.getElementById("totalScore_2").value = "$" + p2tscore;  
         } else {
-            p2 += wheelr1[spinNum]; 
+            p2rscore += wheelr1[spinNum]; 
+            p2tscore += p2rscore; 
+            document.getElementById("roundScore_1").value = "$" + p1rscore; 
+            document.getElementById("totalScore_1").value = "$" + p1tscore; 
+            document.getElementById("roundScore_2").value = "$" + p2rscore; 
+            document.getElementById("totalScore_2").value = "$" + p2tscore; 
         }
         round++;  
     } else {
@@ -275,11 +287,26 @@ function btnGuessLetter_onclick() {
         alert("Please buy a vowel if you are going to guess a vowel."); 
     } else {
         if (clue.includes(guess)) {
+            for (var i = 0; i <= clue.length; i++) {
+                if (clue.charAt(i) == guess) {
+                    document.getElementById("box" + i).innerHTML = clue.charAt(i);
+                }
+            }
             alert("Your guess was correct! Please guess again.");
             if (turn == 1) {
-                p1rscore += wheelr1[spinNum]; // Changed from p1 and p2 to p1rscore and p2rscore
+                p1rscore += wheelr1[spinNum];
+                p1tscore += p1rscore; 
+                document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                document.getElementById("totalScore_2").value = "$" + p2tscore;  
             } else {
-                p2rscore += wheelr1[spinNum]; 
+                p2rscore += wheelr1[spinNum];
+                p2tscore += p2rscore; 
+                document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                document.getElementById("totalScore_2").value = "$" + p2tscore;   
             }
         } else {
             if (turn == 1) {
@@ -310,16 +337,35 @@ function btnBuyVowel_onclick() {
     } else {
         if (turn == 1) {
             p1rscore = p1rscore - 250; 
+            document.getElementById("roundScore_1").value = "$" + p1rscore; 
+            document.getElementById("totalScore_1").value = "$" + p1tscore; 
         }
         if (turn == 2) {
             p2rscore = p2rscore - 250; 
+            document.getElementById("roundScore_2").value = "$" + p2rscore; 
+            document.getElementById("totalScore_2").value = "$" + p2tscore;
         }
         if (clue.includes(guess)) {
+            for (var i = 0; i <= clue.length; i++) {
+                if (clue.charAt(i) == guess) {
+                    document.getElementById("box" + i).innerHTML = clue.charAt(i);
+                }
+            }
             alert("Your guess was correct");
             if (turn == 1) {
-                p1rscore += wheelr1[spinNum]; 
+                p1rscore += wheelr1[spinNum];
+                p1tscore += p1rscore; 
+                document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                document.getElementById("totalScore_2").value = "$" + p2tscore;  
             } else {
-                p2rscore += wheelr1[spinNum];   // Changed from p1 and p2 to p1rscore and p2rscore
+                p2rscore += wheelr1[spinNum];
+                p2tscore += p2rscore; 
+                document.getElementById("roundScore_1").value = "$" + p1rscore; 
+                document.getElementById("totalScore_1").value = "$" + p1tscore; 
+                document.getElementById("roundScore_2").value = "$" + p2rscore; 
+                document.getElementById("totalScore_2").value = "$" + p2tscore; 
             }
         // guess was wrong. change turns 
         } else {
