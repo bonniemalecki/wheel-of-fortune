@@ -68,10 +68,10 @@ function btn_Startonclick() {
     // sets up players' names and starting scores.
     p1 = document.getElementById("userName_1").value; 
     p2 = document.getElementById("userName_2").value;
-    p1rscore = document.getElementById("roundScore_1").value;
-    p1tscore = document.getElementById("totalScore_1").value;
-    p2rscore = document.getElementById("roundScore_2").value;
-    p2tscore = document.getElementById("totalScore_2").value;
+    p1rscore = document.getElementById("roundScore_1").value = 0;
+    p1tscore = document.getElementById("totalScore_1").value = 0;
+    p2rscore = document.getElementById("roundScore_2").value = 0;
+    p2tscore = document.getElementById("totalScore_2").value = 0;
     
     
     
