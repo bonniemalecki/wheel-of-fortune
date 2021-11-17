@@ -277,9 +277,9 @@ function btnGuessLetter_onclick() {
         if (clue.includes(guess)) {
             alert("Your guess was correct! Please guess again.");
             if (turn == 1) {
-                p1 += wheelr1[spinNum]; 
+                p1rscore += wheelr1[spinNum]; // Changed from p1 and p2 to p1rscore and p2rscore
             } else {
-                p2 += wheelr1[spinNum]; 
+                p2rscore += wheelr1[spinNum]; 
             }
         } else {
             if (turn == 1) {
@@ -317,9 +317,9 @@ function btnBuyVowel_onclick() {
         if (clue.includes(guess)) {
             alert("Your guess was correct");
             if (turn == 1) {
-                p1 += wheelr1[spinNum]; 
+                p1rscore += wheelr1[spinNum]; 
             } else {
-                p2 += wheelr1[spinNum]; 
+                p2rscore += wheelr1[spinNum];   // Changed from p1 and p2 to p1rscore and p2rscore
             }
         // guess was wrong. change turns 
         } else {
