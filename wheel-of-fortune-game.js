@@ -65,9 +65,16 @@ function btn_Startonclick() {
     var clueNum = GenRandNum(0, 22);
     clue = clues[clueNum]; 
 
-    // sets up players' names
+    // sets up players' names and starting scores.
     p1 = document.getElementById("userName_1").value; 
-    p2 = document.getElementById("userName_2").value; 
+    p2 = document.getElementById("userName_2").value;
+    p1rscore = document.getElementById("roundScore_1").value;
+    p1tscore = document.getElementById("totalScore_1").value;
+    p2rscore = document.getElementById("roundScore_2").value;
+    p2tscore = document.getElementById("totalScore_2").value;
+    
+    
+    
 
     // prompts player 1 to take spin
     alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
