@@ -126,11 +126,6 @@ function btn_Startonclick() {
         } else {   
             clue = clues1[clueNum]; 
 
-            // clears out board
-            for (var i = 0; i <= 47; i++) {
-                document.getElementById("box" + i).innerHTML = " "; 
-            }
-
             // fills in spaces
             for (var i = 0; i <= clue.length; i++) {
                 if (clue[i] == " ") {
@@ -157,7 +152,7 @@ function btn_Startonclick() {
 
             // clears out board
             for (var i = 0; i <= 47; i++) {
-                document.getElementById("box" + i).innerHTML = ""; 
+                document.getElementById("box" + i).innerHTML = " "; 
             }
 
             // fills in spaces
@@ -184,7 +179,7 @@ function btn_Startonclick() {
 
             // clears out board
             for (var i = 0; i <= 47; i++) {
-                document.getElementById("box" + i).innerHTML = ""; 
+                document.getElementById("box" + i).innerHTML = " "; 
             }
 
             // fills in spaces

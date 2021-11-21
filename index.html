@@ -17,7 +17,8 @@
   <div class = "game-board">
 <!--First Row-->
     <div class="wall"></div> <div class="wall"></div>
-    <div id = "box1" class="box"></div>
+    <div id = "box0" class="box"></div>
+	<div id = "box1" class="box"></div>
 	<div id = "box2" class="box"></div> 
     <div id = "box3" class="box"></div> 
 	<div id = "box4" class="box"></div>  
@@ -26,10 +27,10 @@
     <div id = "box7" class="box"></div> 
 	<div id = "box8" class="box"></div> 
     <div id = "box9" class="box"></div> 
-	<div id = "box10" class="box"></div>
     <div class="wall"></div> <div class="wall"></div>
 
     <!--Second Row-->
+	<div id = "box10" class="box"></div>
     <div id = "box11" class="box"></div> 
 	<div id = "box12" class="box"></div>
     <div id = "box13" class="box"></div> 
@@ -43,9 +44,10 @@
     <div id = "box21" class="box"></div> 
 	<div id = "box22" class="box"></div>
     <div id = "box23" class="box"></div> 
-	<div id = "box24" class="box"></div>
+	
 
     <!--Third row-->
+	<div id = "box24" class="box"></div>
     <div id = "box25" class="box"></div> 
 	<div id = "box26" class="box"></div>
     <div id = "box27" class="box"></div> 
@@ -59,11 +61,12 @@
     <div id = "box35" class="box"></div> 
 	<div id = "box36" class="box"></div>
     <div id = "box37" class="box"></div> 
-	<div id = "box38" class="box"></div>
+
 
     <!--Fourth Row-->
     <div class="wall"></div> 
 	<div class="wall"></div>
+	<div id = "box38" class="box"></div>
     <div id = "box39" class="box"></div> 
 	<div id = "box40" class="box"></div> 
     <div id = "box41" class="box"></div> 
@@ -73,7 +76,6 @@
     <div id = "box45" class="box"></div> 
 	<div id = "box46" class="box"></div> 
     <div id = "box47" class="box"></div> 
-	<div id = "box48" class="box"></div>
     <div class="wall"></div> 
 	<div class="wall"></div>
     
@@ -99,16 +101,16 @@
 						  <label for="userName_1">Player 1:</label>
 						  <input type="text" id="userName_1" placeholder="Default">
 						  <label for="roundScore_1">P1 Score:</label>
-						  <input type="text" id="roundScore_1" readonly>
+						  <input type="text" id="roundScore_1" disabled>
 						  <label for="totalScore_1">P1 Total Score:</label>
-						  <input type="text" id="totalScore_1" readonly> <br>
+						  <input type="text" id="totalScore_1" disabled> <br>
 						  <label for="userName_2">Player 2:</label>
 						  <input type="text" id="userName_2" placeholder="Default">
 						  <label for="roundScore_2">P2 Score:</label>
-						  <input type="text" id="roundScore_2" readonly>
+						  <input type="text" id="roundScore_2" disabled>
 						  <label for="totalScore_2">P2 Total Score:</label>
-						  <input type="text" id="totalScore_2" readonly> <br> <br> <br>
-						  <input id="btnPlayer1" type="button" value="START GAME" onclick ="return btn_Startonclick()"/> 
+						  <input type="text" id="totalScore_2" disabled> <br> <br> <br>
+						  <input id="btnStart" type="button" value="START ROUND" enabled="true" onclick ="return btn_Startonclick()"/> 
 					</div>
 				  </div>      
 		<h2>Round 1</h2>
