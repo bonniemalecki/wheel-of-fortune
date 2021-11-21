@@ -242,11 +242,13 @@ function btnSpin_onclick() {
         if (turn == 1) {
             p1rscore = 0; 
             turn = 2; 
+            alert("You landed on BANKRUPT! \nIt is now " + p2 + "'s turn."); 
         } else {
             p2rscore = 0; 
             turn = 1; 
+            alert("You landed on BANKRUPT! \nIt is now " + p1 + "'s turn."); 
         }
-        alert("You landed on BANKRUPT! \nIt is now player " + turn + "'s turn."); 
+ 
         // disables and enables appropriate buttons
         document.getElementById("btnBuyVowel").disabled = true;
         document.getElementById("btnGuessLetter").disabled = true;
@@ -255,10 +257,11 @@ function btnSpin_onclick() {
     else if (wheelr1[spinNum] == 1) {
         if (turn == 1) {
             turn = 2; 
+            alert("You landed on LOSE A TURN! \nIt is now " + p2 + "'s turn."); 
         } else {
             turn = 1; 
+            alert("You landed on LOSE A TURN! \nIt is now " + p1 + "'s turn."); 
         }
-        alert("You landed on LOSE A TURN! \nIt is now player " + turn + "'s turn."); 
         // disables and enables appropriate buttons
         document.getElementById("btnBuyVowel").disabled = true;
         document.getElementById("btnGuessLetter").disabled = true;
@@ -374,10 +377,12 @@ function btnGuessClue_onclick() {
 } else {
         if (turn == 1) {
             turn = 2; 
+            alert("Your guess was incorrect. It is now " + p2 + "'s turn.");
         } else {
             turn = 1; 
+            alert("Your guess was incorrect. It is now " + p1 + "'s turn.");
         }
-        alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+
         // disables and enables appropriate buttons
         document.getElementById("btnBuyVowel").disabled = true;
         document.getElementById("btnGuessLetter").disabled = true;
@@ -485,10 +490,12 @@ function btnGuessLetter_onclick() {
         } else {
             if (turn == 1) {
                 turn = 2; 
+                alert("Your guess was incorrect. It is now " + p2 + "'s turn.");
             } else {
                 turn = 1; 
+                alert("Your guess was incorrect. It is now " + p1 + "'s turn.");
             }
-            alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+            
             // disables and enables appropriate buttons
             document.getElementById("btnBuyVowel").disabled = true;
             document.getElementById("btnGuessLetter").disabled = true;
@@ -620,10 +627,12 @@ function btnBuyVowel_onclick() {
             } else {
                 if (turn == 1) {
                     turn = 2; 
+                    alert("Your guess was incorrect. It is now " + p2 + "'s turn.");
                 } else {
                     turn = 1; 
+                    alert("Your guess was incorrect. It is now " + p1 + "'s turn.");
                 }
-                alert("Your guess was incorrect. It is now player " + turn + "'s turn.");
+
                 // disables and enables appropriate buttons
                 document.getElementById("btnSpin").disabled = false;
                 document.getElementById("btnBuyVowel").disabled = true;
