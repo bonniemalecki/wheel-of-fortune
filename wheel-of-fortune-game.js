@@ -27,6 +27,7 @@ var p2tscore = 0;
 // who's turn 
 var turn = 1;
 
+// clues for round 1 : Star & Role
 const clues1 = ["Adam Sandler As Happy Gilmore",
 "Anthony Hopkins As Nixon",
 "Bob Denver As Gilligan",
@@ -52,6 +53,7 @@ const clues1 = ["Adam Sandler As Happy Gilmore",
 "Val Kilmer As Batman"
 ];
 
+// clues for round 2 : Fictional Characters
 const clues2 = ["Aphrodite",
 "Babar King Of The Elephants",
 "Batman",
@@ -77,6 +79,7 @@ const clues2 = ["Aphrodite",
 "Popeye The Sailor Man"
 ];
 
+// clues for round 3: Things
 const clues3 = ["Action-Adventure Films",
 "Alfalfa Sprouts",
 "Asterisks",
@@ -126,7 +129,7 @@ function btn_Startonclick() {
         } else {   
             clue = clues1[clueNum]; 
 
-            // fills in spaces
+            // fills in spaces green so player can guess more easily 
             for (var i = 0; i <= clue.length; i++) {
                 if (clue[i] == " ") {
                     document.getElementById("box" + i).style.backgroundColor = "green"; 
@@ -135,7 +138,8 @@ function btn_Startonclick() {
 
             // prompts player 1 to take spin
             alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
-        
+            
+            //displays scores
             document.getElementById("roundScore_1").value =  "$" + p1rscore; 
             document.getElementById("totalScore_1").value =  "$" + p1tscore; 
             document.getElementById("roundScore_2").value =  "$" + p2rscore; 
@@ -155,7 +159,7 @@ function btn_Startonclick() {
                 document.getElementById("box" + i).innerHTML = " "; 
             }
 
-            // fills in spaces
+            // fills in spaces green
             for (var i = 0; i <= clue.length; i++) {
                 if (clue[i] == " ") {
                     document.getElementById("box" + i).style.backgroundColor = "green"; 
@@ -163,7 +167,8 @@ function btn_Startonclick() {
             }
 
         alert("The category for the second round is Fictional Character!\n" + p1 + ", please take your turn."); 
-
+        
+        // displays scores
         document.getElementById("roundScore_1").value =  "$" + p1rscore; 
         document.getElementById("totalScore_1").value =  "$" + p1tscore; 
         document.getElementById("roundScore_2").value =  "$" + p2rscore; 
@@ -182,7 +187,7 @@ function btn_Startonclick() {
                 document.getElementById("box" + i).innerHTML = " "; 
             }
 
-            // fills in spaces
+            // fills in spaces green
             for (var i = 0; i <= clue.length; i++) { 
                 if (clue[i] == " ") {
                     document.getElementById("box" + i).style.backgroundColor = "green"; 
@@ -191,6 +196,7 @@ function btn_Startonclick() {
 
         alert("The category for the last round is Things!\n" + p1 + ", please take your turn."); 
 
+        // displays scores
         document.getElementById("roundScore_1").value =  "$" + p1rscore; 
         document.getElementById("totalScore_1").value =  "$" + p1tscore; 
         document.getElementById("roundScore_2").value =  "$" + p2rscore; 
@@ -210,6 +216,7 @@ function btnSpin_onclick() {
     //cardTimer = setInterval(myWheel, 1000);
     //stopTimer = setTimeout(stopSpin, spinTime);
 
+    // picks what card to land on
     var currCard = 0; 
     spinNum = GenRandNum(0, 23);
 
@@ -284,12 +291,14 @@ function btnSpin_onclick() {
             turn = 1; 
             alert("You landed on LOSE A TURN! \nIt is now " + p1 + "'s turn."); 
         }
+        
         // disables and enables appropriate buttons
         document.getElementById("btnBuyVowel").disabled = true;
         document.getElementById("btnGuessLetter").disabled = true;
         document.getElementById("btnGuessClue").disabled = true;
     } else {
         alert("You landed on " + "$" + wheelr1[spinNum] + "! \nPlease take a guess now.");
+        
         // disables and enables appropriate buttons
         document.getElementById("btnBuyVowel").disabled = false;
         document.getElementById("btnGuessLetter").disabled = false;
@@ -368,7 +377,8 @@ function btnGuessClue_onclick() {
                     document.getElementById("totalScore_1").value = "$" + p1tscore; 
                     document.getElementById("roundScore_2").value = "$" + p2rscore; 
                     document.getElementById("totalScore_2").value = "$" + p2tscore; 
-
+                    
+                    // go to next round
                     round++;
 
                     // disables and enables appropriate buttons
@@ -397,6 +407,7 @@ function btnGuessClue_onclick() {
         }  
     }
 } else {
+        //switches turns
         if (turn == 1) {
             turn = 2; 
             alert("Your guess was incorrect. It is now " + p2 + "'s turn.");
@@ -456,9 +467,11 @@ function btnGuessLetter_onclick() {
             guess.toUpperCase() == u.toUpperCase()) {
         alert("Please buy a vowel if you are going to guess a vowel."); 
     } else {
+        // if correct
         if (clue.toUpperCase().includes(guess.toUpperCase())) {
             for (var i = 0; i <= clue.length; i++) {
                 if (clue.toUpperCase().charAt(i) == guess.toUpperCase()) {
+                    // displays the correctly guessed letter on board
                     document.getElementById("box" + i).innerHTML = clue.toUpperCase().charAt(i);
                     occurrence++; 
                 }
@@ -466,6 +479,7 @@ function btnGuessLetter_onclick() {
             alert("Your guess was correct! Please guess again.");
             if (round == 1){
             if (turn == 1) {
+                // claculates score based off spin and how many time letter occured in the clue
                 p1rscore += (wheelr1[spinNum] * occurrence);
                 document.getElementById("roundScore_1").value = "$" + p1rscore; 
                 document.getElementById("totalScore_1").value = "$" + p1tscore; 
@@ -591,10 +605,12 @@ function btnBuyVowel_onclick() {
             document.getElementById("roundScore_2").value = "$" + p2rscore; 
             document.getElementById("totalScore_2").value = "$" + p2tscore;
         }
+        // only subtracts money if they were able to buy the vowel
         if (bought == 1) {
             if (clue.toUpperCase().includes(guess.toUpperCase())) {
                 for (var i = 0; i <= clue.length; i++) {
                     if (clue.toUpperCase().charAt(i) == guess.toUpperCase()) {
+                        // displays correctly guessed letter on board
                         document.getElementById("box" + i).innerHTML = clue.toUpperCase().charAt(i);
                         occurrence++; 
                     }
