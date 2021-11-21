@@ -128,7 +128,7 @@ function btn_Startonclick() {
 
             // clears out board
             for (var i = 0; i <= 47; i++) {
-                document.getElementById("box" + i).innerHTML = ""; 
+                document.getElementById("box" + i).innerHTML = " "; 
             }
 
             // fills in spaces
