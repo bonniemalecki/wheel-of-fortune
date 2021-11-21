@@ -125,6 +125,19 @@ function btn_Startonclick() {
             alert("Please enter your names to start the game."); 
         } else {   
             clue = clues1[clueNum]; 
+
+            // clears out board
+            for (var i = 0; i <= 47; i++) {
+                document.getElementById("box" + i).innerHTML = ""; 
+            }
+
+            // fills in spaces
+            for (var i = 0; i <= clue.length; i++) {
+                if (clue[i] == " ") {
+                    document.getElementById("box" + i).style.backgroundColor = "green"; 
+                }
+            }
+
             // prompts player 1 to take spin
             alert("The category for the first round is Star & Role!\n" + p1 + ", please take your turn."); 
         
@@ -142,9 +155,16 @@ function btn_Startonclick() {
     if (round == 2) {
         clue = clues2[clueNum]; 
 
-        // clears out board
-        for (var i = 0; i <= 47; i++) {
+            // clears out board
+            for (var i = 0; i <= 47; i++) {
                 document.getElementById("box" + i).innerHTML = ""; 
+            }
+
+            // fills in spaces
+            for (var i = 0; i <= clue.length; i++) {
+                if (clue[i] == " ") {
+                    document.getElementById("box" + i).style.backgroundColor = "green"; 
+                }
             }
 
         alert("The category for the second round is Fictional Character!\n" + p1 + ", please take your turn."); 
@@ -162,10 +182,17 @@ function btn_Startonclick() {
     if (round == 3) {
         clue = clues3[clueNum]; 
 
-        // clears out board
-        for (var i = 0; i <= 47; i++) {
-            document.getElementById("box" + i).innerHTML = ""; 
-        }
+            // clears out board
+            for (var i = 0; i <= 47; i++) {
+                document.getElementById("box" + i).innerHTML = ""; 
+            }
+
+            // fills in spaces
+            for (var i = 0; i <= clue.length; i++) { 
+                if (clue[i] == " ") {
+                    document.getElementById("box" + i).style.backgroundColor = "green"; 
+                }
+            }
 
         alert("The category for the last round is Things!\n" + p1 + ", please take your turn."); 
 
